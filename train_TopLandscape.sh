@@ -56,8 +56,8 @@ weaver \
     --data-test "${DATADIR}/test_file.parquet" \
     --data-config data/TopLandscape/top_${FEATURE_TYPE}.yaml --network-config $modelopts \
     --model-prefix training/TopLandscape/${model}/{auto}${suffix}/net \
-    --num-workers 1 --fetch-step 1 --in-memory \
-    --batch-size 512 --samples-per-epoch $((2400 * 512)) --samples-per-epoch-val $((800 * 512)) --num-epochs 20 --gpus 0 \
+    --num-workers 0 --fetch-step 1 --in-memory \
+    --batch-size 512 --samples-per-epoch $((2400 * 512)) --samples-per-epoch-val $((800 * 512)) --num-epochs 50 --gpus 0 \
     --start-lr $lr --optimizer ranger --log logs/TopLandscape_${model}_{auto}${suffix}.log --predict-output pred.root \
     --tensorboard TopLandscape_${FEATURE_TYPE}_${model}${suffix} \
     ${extraopts} "${@:3}"
